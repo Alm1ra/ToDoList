@@ -2,14 +2,16 @@
 
 body {
     font-family: 'Montserrat', sans-serif !important;
-    background-color: #F6F6F2;
+    background-color: #ADADAD;
     margin: 0;
+    height: 100%;
 }
 
 #header {
+    margin: 0;
     background-color: #2E1114;
-    color: #7A2640;
-    padding: 3rem;
+    color: #AF4767;
+    height: 280px;
     text-align: center;
 }
 
@@ -27,7 +29,8 @@ input[type="text"]{
     font-size: 1.3rem;
 }
 
-input[type="submit"]{
+#submit-btn {
+    font: inherit;
     border: none;
     background-color: #7A2640;
     color: #E1C5CE;
@@ -35,14 +38,19 @@ input[type="submit"]{
     margin-left: 0.8rem;
     width: 8rem;
     font-size: 1.3rem;
+    cursor: pointer;
 }
 
-input[type="submit"]:hover {
-    background-color: #64485C;
+#submit-btn:hover {
+    background-color: #AF4767;
+    
 }
 
 #header h1 {
     font-size: 3rem;
+    margin: 0;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
 }
 
 h1 {
@@ -50,13 +58,75 @@ h1 {
 }
 
 #todo {
-    background-color: red;
+    color: #2E1114;
     float: left;
-    width: 50%;
+    width: calc(50% - 1px);
+    min-height: 70vh;
+    border-right: 1px solid;
+    border-color: #7A2640;
 }
 
-#done {   
-    background-color: green;
+#sub-header {
+    display: flex;
+    justify-content: center;
+}
+
+#sub-header h1{
+    margin: 0;
+    margin-top: 1rem;
+}
+
+#sub-header button {
+    font: inherit;
+    border: none;
+    color: #E1C5CE;
+    border-radius: 4px 4px 4px 4px;
+    margin-top: 1rem;
+    width: 3.2rem;
+    cursor: pointer;
+}
+
+#todo-sort:hover {
+    background-color: #CB5A7C;
+}
+
+#todo-del:hover {
+    background-color: #c73a48;
+}
+
+#todo-sort {
+    margin-left: 1.5rem;
+    background-color: #AF4767;
+} 
+
+#todo-del {
+    margin-left: 0.8rem;
+    background-color: #A32936;
+} 
+
+#done {
+    color: #2E1114;   
     float: right;
-    width: 50%;
+    width: calc(50% - 1px);
+    min-height: 70vh;
+    border-left: 1px solid;
+    border-color: #7A2640;
+}
+
+#container {
+    margin: 3rem;
+    margin-top: 0;
+}
+
+#container .fas {
+    margin-right: 1rem;
+}
+
+p {
+    font-size: 1.3rem;
+    /*background-color: #83677BC2;
+    background-color: #83677B;*/
+    background-color: #8d183c47;
+    padding: 1rem;
+    border-radius: 26px 26px 26px 26px;
 }
