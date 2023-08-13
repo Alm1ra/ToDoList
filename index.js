@@ -1,43 +1,63 @@
-let todoArr = [];
-let doneArr = [];
+let todoArr = (localStorage.getItem('todo')) ? (JSON.parse(localStorage.getItem('todo'))) : []
+let doneArr = (localStorage.getItem('done')) ? (JSON.parse(localStorage.getItem('done'))) : []
 
 const taskForm = document.getElementById('taskForm');
 const sortAllTodo = document.getElementById('todo').querySelector('#sort-btn');
 const deleteAllTodo = document.getElementById('todo').querySelector('#del-btn');
 
-function makeList(arr, id) {
+function makeList() {
     document.getElementById('todo').querySelector('#container').innerHTML = "";
-    arr.forEach(task => {
+    document.getElementById('done').querySelector('#container').innerHTML = "";
+
+    let retTodo = JSON.parse(localStorage.getItem('todo'));
+    let retDone = JSON.parse(localStorage.getItem('done'));
+
+    if(retTodo) {
+      retTodo.forEach(task => {
         let p = document.createElement("p");
         p.innerHTML = `<i class="fas fa-circle"></i>` + task;
-        document.getElementById(id).querySelector('#container').appendChild(p);
-    });
+        document.getElementById('todo').querySelector('#container').appendChild(p);
+      });
+    }
+    
+    if(retDone) {
+      retDone.forEach(task => {
+        let p = document.createElement("p");
+        p.innerHTML = `<i class="fas fa-circle"></i>` + task;
+        document.getElementById('done').querySelector('#container').appendChild(p);
+      });
+    }
+    
 }
 
+makeList();
+
 taskForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const userInput = document.getElementById('task').value;
-    document.getElementById("taskForm").reset();
-    todoArr.push(userInput);
+  e.preventDefault();
+  const userInput = document.getElementById('task').value;
 
-    console.log(todoArr);
+  console.log(todoArr);
 
-    //let storedTodo = JSON.string(todoArr);
-    //localStorage.setItem("todo", storedTodo);
+  document.getElementById("taskForm").reset();
+  todoArr.push(userInput);
 
-   // console.log(JSON.parse(localStorage.getItem("todo")));
-    makeList(todoArr, 'todo');
-  });
+  console.log(todoArr);
 
-  deleteAllTodo.addEventListener("click", (e) => {
-    todoArr.length = 0;
-    makeList(todoArr, 'todo');
-  })
+  localStorage.setItem("todo", JSON.stringify(todoArr));
+  makeList(todoArr, 'todo');
+});
 
-  sortAllTodo.addEventListener("click", (e) => {
-    todoArr.sort();
-    makeList(todoArr, 'todo');
-  })
+deleteAllTodo.addEventListener("click", (e) => {
+  localStorage.removeItem("todo");
+  todoArr.length = 0;
+  makeList();
+})
+
+sortAllTodo.addEventListener("click", (e) => {
+  todoArr.sort();
+  localStorage.setItem("todo", JSON.stringify(todoArr));
+  makeList();
+})
 
 
 
