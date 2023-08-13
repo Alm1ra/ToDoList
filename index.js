@@ -14,9 +14,26 @@ function makeList() {
 
     if(retTodo) {
       retTodo.forEach(task => {
+        let div = document.createElement("div");
+        div.className = 'task-div';     
+
+        let btn_fin = document.createElement("button");
+        btn_fin.className = 'btn-finished';
+        btn_fin.innerHTML = `<i class="fas fa-check"></i>`;
+        btn_fin.title = "Task completed";
+
+        let btn_del = document.createElement("button");
+        btn_del.className = 'btn-delete';
+        btn_del.innerHTML = `<i class="fas fa-trash"></i>`;
+        btn_del.title = "Delete task";
+
         let p = document.createElement("p");
+        
         p.innerHTML = `<i class="fas fa-circle"></i>` + task;
-        document.getElementById('todo').querySelector('#container').appendChild(p);
+
+        div.append(p, btn_fin, btn_del);
+
+        document.getElementById('todo').querySelector('#container').appendChild(div);
       });
     }
     
@@ -36,12 +53,8 @@ taskForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const userInput = document.getElementById('task').value;
 
-  console.log(todoArr);
-
   document.getElementById("taskForm").reset();
   todoArr.push(userInput);
-
-  console.log(todoArr);
 
   localStorage.setItem("todo", JSON.stringify(todoArr));
   makeList(todoArr, 'todo');
