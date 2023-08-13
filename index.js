@@ -2,7 +2,8 @@ let todoArr = [];
 let doneArr = [];
 
 const taskForm = document.getElementById('taskForm');
-const deleteAllTodo = document.getElementById('todo').querySelector('#todo-del')
+const sortAllTodo = document.getElementById('todo').querySelector('#sort-btn');
+const deleteAllTodo = document.getElementById('todo').querySelector('#del-btn');
 
 function makeList(arr, id) {
     document.getElementById('todo').querySelector('#container').innerHTML = "";
@@ -20,10 +21,23 @@ taskForm.addEventListener("submit", (e) => {
     todoArr.push(userInput);
 
     console.log(todoArr);
+
+    //let storedTodo = JSON.string(todoArr);
+    //localStorage.setItem("todo", storedTodo);
+
+   // console.log(JSON.parse(localStorage.getItem("todo")));
     makeList(todoArr, 'todo');
   });
 
+  deleteAllTodo.addEventListener("click", (e) => {
+    todoArr.length = 0;
+    makeList(todoArr, 'todo');
+  })
 
+  sortAllTodo.addEventListener("click", (e) => {
+    todoArr.sort();
+    makeList(todoArr, 'todo');
+  })
 
 
 

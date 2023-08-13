@@ -86,20 +86,20 @@ h1 {
     cursor: pointer;
 }
 
-#todo-sort:hover {
+#sort-btn:hover {
     background-color: #CB5A7C;
 }
 
-#todo-del:hover {
+#del-btn:hover {
     background-color: #c73a48;
 }
 
-#todo-sort {
+#sort-btn {
     margin-left: 1.5rem;
     background-color: #AF4767;
 } 
 
-#todo-del {
+#del-btn {
     margin-left: 0.8rem;
     background-color: #A32936;
 } 
