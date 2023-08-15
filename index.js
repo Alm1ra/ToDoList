@@ -39,9 +39,19 @@ function makeList() {
     
     if(retDone) {
       retDone.forEach(task => {
+        let div = document.createElement("div");
+        div.className = 'task-div';  
+
+        let btn_del = document.createElement("button");
+        btn_del.className = 'btn-delete';
+        btn_del.innerHTML = `<i class="fas fa-trash"></i>`;
+        btn_del.title = "Delete task";
+
         let p = document.createElement("p");
         p.innerHTML = `<i class="fas fa-circle"></i>` + task;
-        document.getElementById('done').querySelector('.container').appendChild(p);
+
+        div.append(p, btn_del);
+        document.getElementById('done').querySelector('.container').appendChild(div);
       });
     }
     
