@@ -5,9 +5,11 @@ const taskForm = document.getElementById('taskForm');
 const sortAllTodo = document.getElementById('todo').querySelector('#sort-btn');
 const deleteAllTodo = document.getElementById('todo').querySelector('#del-btn');
 
+const taskButtons = document.querySelector("#todo").querySelector(".container");
+
 function makeList() {
-    document.getElementById('todo').querySelector('#container').innerHTML = "";
-    document.getElementById('done').querySelector('#container').innerHTML = "";
+    document.getElementById('todo').querySelector('.container').innerHTML = "";
+    document.getElementById('done').querySelector('.container').innerHTML = "";
 
     let retTodo = JSON.parse(localStorage.getItem('todo'));
     let retDone = JSON.parse(localStorage.getItem('done'));
@@ -27,13 +29,11 @@ function makeList() {
         btn_del.innerHTML = `<i class="fas fa-trash"></i>`;
         btn_del.title = "Delete task";
 
-        let p = document.createElement("p");
-        
+        let p = document.createElement("p");  
         p.innerHTML = `<i class="fas fa-circle"></i>` + task;
 
         div.append(p, btn_fin, btn_del);
-
-        document.getElementById('todo').querySelector('#container').appendChild(div);
+        document.getElementById('todo').querySelector('.container').appendChild(div);
       });
     }
     
@@ -41,7 +41,7 @@ function makeList() {
       retDone.forEach(task => {
         let p = document.createElement("p");
         p.innerHTML = `<i class="fas fa-circle"></i>` + task;
-        document.getElementById('done').querySelector('#container').appendChild(p);
+        document.getElementById('done').querySelector('.container').appendChild(p);
       });
     }
     
@@ -72,5 +72,20 @@ sortAllTodo.addEventListener("click", (e) => {
   makeList();
 })
 
+taskButtons.addEventListener("click", (e) => {
+  const clickedBtn = e.target.parentNode;
+  if(clickedBtn.nodeName !== 'BUTTON') {return;}
+    
+  let chosenTask = (clickedBtn.parentNode.innerText);
+  let index = todoArr.indexOf(chosenTask);
+  todoArr.splice(index, 1);
+  console.log(todoArr);
+  localStorage.setItem("todo", JSON.stringify(todoArr));
 
+  if(clickedBtn.className === 'btn-finished') {
+    doneArr.push(chosenTask);
+    localStorage.setItem("done", JSON.stringify(doneArr));
+  }
+  makeList();
+})
 

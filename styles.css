@@ -23,7 +23,6 @@ form {
 
 input[type="text"]{
     border: none;
-    background-color: #EBD1D9;
     width: 25rem;
     height: 2.3rem;
     font-size: 1.3rem;
@@ -113,7 +112,7 @@ h1 {
     border-color: #7A2640;
 }
 
-#container {
+.container {
     margin: 3rem;
     margin-top: 0;
 }
