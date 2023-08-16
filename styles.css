@@ -85,20 +85,20 @@ h1 {
     cursor: pointer;
 }
 
-#sort-btn:hover {
+.sort-btn:hover {
     background-color: #CB5A7C;
 }
 
-#del-btn:hover {
+.del-btn:hover {
     background-color: #c73a48;
 }
 
-#sort-btn {
+.sort-btn {
     margin-left: 1.5rem;
     background-color: #AF4767;
 } 
 
-#del-btn {
+.del-btn {
     margin-left: 0.8rem;
     background-color: #A32936;
 } 

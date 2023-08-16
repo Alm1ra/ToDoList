@@ -2,8 +2,10 @@ let todoArr = (localStorage.getItem('todo')) ? (JSON.parse(localStorage.getItem(
 let doneArr = (localStorage.getItem('done')) ? (JSON.parse(localStorage.getItem('done'))) : []
 
 const taskForm = document.getElementById('taskForm');
-const sortAllTodo = document.getElementById('todo').querySelector('#sort-btn');
-const deleteAllTodo = document.getElementById('todo').querySelector('#del-btn');
+const sortAllTodo = document.getElementById('todo').querySelector('.sort-btn');
+const deleteAllTodo = document.getElementById('todo').querySelector('.del-btn');
+const sortAllDone = document.getElementById('done').querySelector('.sort-btn');
+const deleteAllDone = document.getElementById('done').querySelector('.del-btn');
 
 const taskButtons = document.querySelector("#todo").querySelector(".container");
 
@@ -79,6 +81,18 @@ deleteAllTodo.addEventListener("click", (e) => {
 sortAllTodo.addEventListener("click", (e) => {
   todoArr.sort();
   localStorage.setItem("todo", JSON.stringify(todoArr));
+  makeList();
+})
+
+deleteAllDone.addEventListener("click", (e) => {
+  localStorage.removeItem("done");
+  doneArr.length = 0;
+  makeList();
+})
+
+sortAllDone.addEventListener("click", (e) => {
+  doneArr.sort();
+  localStorage.setItem("done", JSON.stringify(doneArr));
   makeList();
 })
 
