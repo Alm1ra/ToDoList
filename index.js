@@ -7,7 +7,8 @@ const deleteAllTodo = document.getElementById('todo').querySelector('.del-btn');
 const sortAllDone = document.getElementById('done').querySelector('.sort-btn');
 const deleteAllDone = document.getElementById('done').querySelector('.del-btn');
 
-const taskButtons = document.querySelector("#todo").querySelector(".container");
+const todoTaskBtns = document.querySelector("#todo").querySelector(".container");
+const doneTaskBtns = document.querySelector("#done").querySelector(".container");
 
 function makeList() {
     document.getElementById('todo').querySelector('.container').innerHTML = "";
@@ -96,7 +97,7 @@ sortAllDone.addEventListener("click", (e) => {
   makeList();
 })
 
-taskButtons.addEventListener("click", (e) => {
+todoTaskBtns.addEventListener("click", (e) => {
   const clickedBtn = e.target.parentNode;
   if(clickedBtn.nodeName !== 'BUTTON') {return;}
     
@@ -110,6 +111,18 @@ taskButtons.addEventListener("click", (e) => {
     doneArr.push(chosenTask);
     localStorage.setItem("done", JSON.stringify(doneArr));
   }
+  makeList();
+})
+
+doneTaskBtns.addEventListener("click", (e) => {
+  const clickedBtn = e.target.parentNode;
+  if(clickedBtn.nodeName !== 'BUTTON') {return;}
+    
+  let chosenTask = (clickedBtn.parentNode.innerText);
+  let index = doneArr.indexOf(chosenTask);
+  doneArr.splice(index, 1);
+  console.log(doneArr);
+  localStorage.setItem("done", JSON.stringify(doneArr));
   makeList();
 })
 
