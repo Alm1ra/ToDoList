@@ -104,7 +104,6 @@ todoTaskBtns.addEventListener("click", (e) => {
   let chosenTask = (clickedBtn.parentNode.innerText);
   let index = todoArr.indexOf(chosenTask);
   todoArr.splice(index, 1);
-  console.log(todoArr);
   localStorage.setItem("todo", JSON.stringify(todoArr));
 
   if(clickedBtn.className === 'btn-finished') {
@@ -121,7 +120,6 @@ doneTaskBtns.addEventListener("click", (e) => {
   let chosenTask = (clickedBtn.parentNode.innerText);
   let index = doneArr.indexOf(chosenTask);
   doneArr.splice(index, 1);
-  console.log(doneArr);
   localStorage.setItem("done", JSON.stringify(doneArr));
   makeList();
 })

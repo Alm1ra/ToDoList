@@ -12,7 +12,7 @@ body {
     margin: 0;
     background-color: #2E1114;
     color: #AF4767;
-    height: 28vh;
+    height: 25vh;
     text-align: center;
 }
 
@@ -68,12 +68,13 @@ h1 {
     width: calc(50% - 1px);
     border-right: 1px solid;
     border-color: #7A2640;
+    overflow-y: scroll;
 }
 
 #sub-header {
     display: flex;
     justify-content: center;
-    padding: 1vh 0 2.5vh 0;
+    padding: 1vh 0 2vh 0;
 }
 
 #sub-header h1{
@@ -116,12 +117,12 @@ h1 {
     width: calc(50% - 1px);
     border-left: 1px solid;
     border-color: #7A2640;
+    overflow-y: scroll;
 }
 
 .container {
     height: 62vh;
     padding-bottom: 5vh;
-    overflow-y: scroll;
     margin: 3rem;
     margin-top: 0;
 }
@@ -131,15 +132,9 @@ h1 {
 }
 
 p {
-    /*font-size: 1.5vh;
-    background-color: #8d183c47;
-    padding: 1rem;
-    border-radius: 26px 26px 26px 26px;
-    width: 80%;
-    margin-right: 0.8rem;*/
     font-size: 1.1rem;
     background-color: #8d183c47;
-    padding: 1vh;
+    padding: 1.1vh;
     border-radius: 26px 26px 26px 26px;
     width: 80%;
     margin: 1vh;
@@ -157,7 +152,7 @@ p {
 }
 
 .btn-finished .fas {
-    font-size: 2.2rem;
+    font-size: 2rem;
     color: #753153;
     margin-right: 0.5rem;  
 }
@@ -167,7 +162,7 @@ p {
 }
 
 .btn-delete .fas {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: #753153;
     margin: 0;  
 }
