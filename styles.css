@@ -20,14 +20,11 @@ body {
 form {
     justify-content: center;
     display: flex;
-    /*margin-bottom: 2rem;*/
 }
 
 input[type="text"]{
     font-family: inherit;
     border: none;
-    /*width: 25rem;
-    height: 2.3rem;*/
     width: 30vw;
     height: 2vh;
     font-size: 1.2rem;

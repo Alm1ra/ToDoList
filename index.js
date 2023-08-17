@@ -56,8 +56,34 @@ function makeList() {
         div.append(p, btn_del);
         document.getElementById('done').querySelector('.container').appendChild(div);
       });
-    }
+    }    
+}
+
+function deleteAll(section, arr) {
+  localStorage.removeItem(section);
+  arr.length = 0;
+  makeList();
+}
+
+function sortAll(section, arr) {
+  arr.sort();
+  localStorage.setItem(section, JSON.stringify(arr));
+  makeList();
+}
+
+function taskButtons(clickedBtn, section, arr) {
+  if(clickedBtn.nodeName !== 'BUTTON') {return;}
     
+  let chosenTask = (clickedBtn.parentNode.innerText);
+  let index = arr.indexOf(chosenTask);
+  arr.splice(index, 1);
+  localStorage.setItem(section, JSON.stringify(arr));
+
+  if(clickedBtn.className === 'btn-finished') {
+    doneArr.push(chosenTask);
+    localStorage.setItem("done", JSON.stringify(doneArr));
+  }
+  makeList();
 }
 
 makeList();
@@ -74,53 +100,28 @@ taskForm.addEventListener("submit", (e) => {
 });
 
 deleteAllTodo.addEventListener("click", (e) => {
-  localStorage.removeItem("todo");
-  todoArr.length = 0;
-  makeList();
-})
-
-sortAllTodo.addEventListener("click", (e) => {
-  todoArr.sort();
-  localStorage.setItem("todo", JSON.stringify(todoArr));
-  makeList();
+  deleteAll("todo", todoArr);
 })
 
 deleteAllDone.addEventListener("click", (e) => {
-  localStorage.removeItem("done");
-  doneArr.length = 0;
-  makeList();
+  deleteAll("done", doneArr);
+})
+
+sortAllTodo.addEventListener("click", (e) => {
+  sortAll("todo", todoArr);
 })
 
 sortAllDone.addEventListener("click", (e) => {
-  doneArr.sort();
-  localStorage.setItem("done", JSON.stringify(doneArr));
-  makeList();
+  sortAll("done", doneArr);
 })
 
-todoTaskBtns.addEventListener("click", (e) => {
+todoTaskBtns.addEventListener("click", (e) => { 
   const clickedBtn = e.target.parentNode;
-  if(clickedBtn.nodeName !== 'BUTTON') {return;}
-    
-  let chosenTask = (clickedBtn.parentNode.innerText);
-  let index = todoArr.indexOf(chosenTask);
-  todoArr.splice(index, 1);
-  localStorage.setItem("todo", JSON.stringify(todoArr));
-
-  if(clickedBtn.className === 'btn-finished') {
-    doneArr.push(chosenTask);
-    localStorage.setItem("done", JSON.stringify(doneArr));
-  }
-  makeList();
+  taskButtons(clickedBtn, "todo", todoArr);
 })
 
 doneTaskBtns.addEventListener("click", (e) => {
   const clickedBtn = e.target.parentNode;
-  if(clickedBtn.nodeName !== 'BUTTON') {return;}
-    
-  let chosenTask = (clickedBtn.parentNode.innerText);
-  let index = doneArr.indexOf(chosenTask);
-  doneArr.splice(index, 1);
-  localStorage.setItem("done", JSON.stringify(doneArr));
-  makeList();
+  taskButtons(clickedBtn, "done", doneArr);
 })
 
